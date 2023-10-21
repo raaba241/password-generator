@@ -20,9 +20,8 @@ var generatePassword = function () {
   var sizePass;
   var lowerCase;
   var upperCase;
-  var numeric = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+  var numeric = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
   var specialChar;
-  var filledIndex = [];
   var lWords = [
     "a",
     "b",
@@ -79,36 +78,7 @@ var generatePassword = function () {
     "Y",
     "Z",
   ];
-  var specialCharacters = [
-    "!",
-    "@",
-    "#",
-    "$",
-    "%",
-    "&",
-    "*",
-    "+",
-    "-",
-    "=",
-    "_",
-    "|",
-    "~",
-    "`",
-    "(",
-    ")",
-    "[",
-    "]",
-    "{",
-    "}",
-    "<",
-    ">",
-    "?",
-    "/",
-    ".",
-    ",",
-    ":",
-    ";",
-  ];
+  var specialCharacters = ["!", "#", "$", "%", "^", "&", "*"];
 
   // Asking for password criteria
   sizePass = prompt(
@@ -118,74 +88,111 @@ var generatePassword = function () {
   upperCase = confirm("Include at least 1 UPPERCASE?");
   numberChar = confirm("Include at least 1 number?");
   specialChar = confirm("Include at least 1 Special Character (eg: */!?#)?");
-  emptySpot = true
+  emptySpot = true;
 
   while (emptySpot) {
+    var spot;
+
     // Using user criteria LowerCase, generate password;
-    if (lowerCase === true) {
-      var spot = Math.floor(Math.random() * sizePass);
+    if (lowerCase === true && emptySpot === true) {
+      spot = Math.floor(Math.random() * sizePass );
 
       // Keep generating a new spot if current spot is taken
       while (generatedPass[spot] !== undefined) {
-        spot = Math.floor(Math.random() * sizePass);
+        spot = Math.floor(Math.random() * sizePass );
       }
-      generatedPass[spot] = lWords[Math.floor(Math.random() * 25)];
+      generatedPass[spot] = lWords[Math.floor(Math.random() * 27)];
+    }
+
+    var spotLeft = 0;
+
+    for (var x = 0; x < sizePass; x++) {
+      
+      if (generatedPass[x] === undefined) {
+        spotLeft++;
+      }
+    }
+
+    if (spotLeft === 0) {
+      emptySpot = false;
+      break;
     }
 
     // Using user criteria UpperCase, generate password;
-    if (upperCase === true) {
+    if (upperCase === true && emptySpot === true) {
       spot = Math.floor(Math.random() * sizePass);
 
       //  If the index in the array is taken up, generate a new spot
       while (generatedPass[spot] !== undefined) {
         spot = Math.floor(Math.random() * sizePass);
       }
-      generatedPass[spot] = uWords[Math.floor(Math.random() * 25)];
+      generatedPass[spot] = uWords[Math.floor(Math.random() * 27)];
+    }
+    var spotLeft = 0;
+    for (var x = 0; x < sizePass; x++) {
+      
+      if (generatedPass[x] === undefined) {
+        spotLeft++;
+      }
+    }
+
+    if (spotLeft === 0) {
+      emptySpot = false;
+      break;
     }
 
     // Using user criteria Special Case, generate password;
-    if (specialChar === true) {
+    if (specialChar === true && emptySpot === true) {
       spot = Math.floor(Math.random() * sizePass);
 
       //  If the index in the array is taken up, generate a new spot
       while (generatedPass[spot] !== undefined) {
         spot = Math.floor(Math.random() * sizePass);
       }
-      generatedPass[spot] = specialCharacters[Math.floor(Math.random() * 27)];
+      generatedPass[spot] = specialCharacters[Math.floor(Math.random() * 8)];
+    }
+    var spotLeft = 0;
+    for (var x = 0; x < sizePass; x++) {
+      
+      if (generatedPass[x] === undefined) {
+        spotLeft++;
+      }
+    }
+
+    if (spotLeft === 0) {
+      emptySpot = false;
+      break;
     }
 
     // Using user criteria Numeric, generate password;
-    if (numberChar === true) {
+    if (numberChar === true && emptySpot === true) {
       spot = Math.floor(Math.random() * sizePass);
 
       //  If the index in the array is taken up, generate a new spot
       while (generatedPass[spot] !== undefined) {
         spot = Math.floor(Math.random() * sizePass);
       }
-      generatedPass[spot] = numeric[Math.floor(Math.random() * 9)];
+      generatedPass[spot] = numeric[Math.floor(Math.random() * 10)];
     }
 
-    // Checking to see 
+    var spotLeft = 0;
+
     for (var x = 0; x < sizePass; x++) {
+      
+
       if (generatedPass[x] === undefined) {
-        emptySpot = true;
-        break;
-      }
-      else if (x === sizePass-1 && generatedPass[x] !== undefined ){
-        emptySpot = false;
+        spotLeft++;
       }
     }
 
-
-
-    // Error debugging 
-    for (var x = 0; x < sizePass; x++) {
-      console.log(generatedPass[x]);
+    if (spotLeft === 0) {
+      emptySpot = false;
+      break;
     }
+  }
 
-  } //This whole function bracket
-
-
-
-
-}
+  // Error debugging
+  for (var x = 0; x < sizePass; x++) {
+    console.log(generatedPass[x]);
+  }
+};
