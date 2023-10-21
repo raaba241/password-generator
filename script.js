@@ -93,6 +93,7 @@ var generatePassword = function () {
   specialChar = confirm("Include at least 1 Special Character (eg: */!?#)?");
   emptySpot = true;
 
+  // Main password generation loop
   while (emptySpot) {
     var spot;
 
@@ -109,6 +110,7 @@ var generatePassword = function () {
     // Resets the count for spots to zero to be thorough each time
     var spotLeft = 0;
 
+    // Checks if there is a spot open in the array
     for (var x = 0; x < passwordLength; x++) {
       if (generatedPass[x] === undefined) {
         spotLeft++;
@@ -134,6 +136,7 @@ var generatePassword = function () {
     // Resets the count for spots to zero to be thorough each time
     var spotLeft = 0;
 
+    // Checks if there is a spot open in the array
     for (var x = 0; x < passwordLength; x++) {
       if (generatedPass[x] === undefined) {
         spotLeft++;
@@ -159,6 +162,7 @@ var generatePassword = function () {
     // Resets the count for spots to zero to be thorough each time
     var spotLeft = 0;
 
+    // Checks if there is a spot open in the array
     for (var x = 0; x < passwordLength; x++) {
       if (generatedPass[x] === undefined) {
         spotLeft++;
@@ -184,6 +188,7 @@ var generatePassword = function () {
     // Resets the count for spots to zero to be thorough each time
     var spotLeft = 0;
 
+    // Checks if there is a spot open in the array
     for (var x = 0; x < passwordLength; x++) {
       if (generatedPass[x] === undefined) {
         spotLeft++;
