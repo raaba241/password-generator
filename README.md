@@ -12,5 +12,5 @@ https://raaba241.github.io/password-generator/
 
 ## Screenshots
 
-![Alt text](./assets/images/Screenshot%202023-10-21%20024011.png "The password generator website")
+![Alt text](./Assets/Images/Screenshot%202023-10-21%20024011.png "The password generator website")
 
